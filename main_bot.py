@@ -20,5 +20,6 @@ class MainBot:
                 break
 
             ai_response = self.ai.get_answer(user_text)
+            print(">>Запрос отправлен")
             self.speech.speak(ai_response)
 
