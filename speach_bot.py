@@ -5,6 +5,7 @@ import json
 import pyttsx3
 from vosk import Model, KaldiRecognizer
 
+
 class SpeechBot:
     def __init__(self, model_path="model"):
         self.engine = pyttsx3.init()
@@ -17,8 +18,7 @@ class SpeechBot:
                 break
 
         if not os.path.exists(model_path):
-            print(f"Ошибка: Папка модели '{model_path}' не найдена!")
-            exit(1)
+            raise FileNotFoundError(f"Папка модели '{model_path}' не найдена!")
 
         self.model = Model(model_path)
         self.recognizer = KaldiRecognizer(self.model, 16000)
@@ -28,6 +28,9 @@ class SpeechBot:
         self.q.put(bytes(indata))
 
     def listen(self):
+        with self.q.mutex:
+            self.q.queue.clear()
+
         print("Слушаю...")
         with sd.RawInputStream(samplerate=16000, blocksize=8000, dtype='int16',
                                channels=1, callback=self._callback):
@@ -39,12 +42,10 @@ class SpeechBot:
                     if text:
                         print(f"Вы сказали: {text}")
                         return text
-                else:
-                    pass
 
     def speak(self, text):
-        if not text: return
+        if not text:
+            return
         print(f"Бот: {text}")
         self.engine.say(text)
         self.engine.runAndWait()
-

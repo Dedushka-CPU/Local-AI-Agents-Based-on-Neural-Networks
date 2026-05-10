@@ -64,7 +64,7 @@ class MainBot:
         }
 
         self._re_help = re.compile(r"\b(помощь|команд[ыа]?|что ты умеешь|что можешь)\b", re.IGNORECASE)
-        self._re_start_ollama = re.compile(r"\b(запусти|включи|старт)\b.*\b(оллам[ауые]?|ollama)\b", re.IGNORECASE)
+        self._re_start_ollama = re.compile(r"\b(запусти|включи|старт)\b.*\b(оллам[ауые]?|сервер)\b", re.IGNORECASE)
         self._re_switch_apps = re.compile(r"\b(режим)\b.*\b(прилож)\b|\bприложения\b", re.IGNORECASE)
         self._re_switch_ai = re.compile(r"\b(режим)\b.*\b(ии|ai)\b|\b(назад|вернись)\b", re.IGNORECASE)
         self._re_clear_bin = re.compile(r"\b(очисти|очистить|очищ)\b.*\b(корзин|коризн)\b", re.IGNORECASE)

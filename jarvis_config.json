@@ -1,0 +1,30 @@
+{
+  "model_name": "deepseek-r1:8b",
+  "ollama_address": "http://localhost:11434",
+  "voice": "SYNTH_FEMALE_02",
+  "mode": "ai",
+  "wake_word": "джарвис",
+  "app_map": {
+    "ютуб": "https:www.youtube.com/",
+    "телеграм": "https://web.telegram.org/",
+    "блокнот": "notepad.exe",
+    "калькулятор": "calc.exe",
+    "проводник": "explorer.exe"
+  },
+  "noise_words": [
+    "пожалуйста",
+    "давай",
+    "ну",
+    "короче",
+    "быстро",
+    "сейчас",
+    "мне",
+    "пж",
+    "плиз"
+  ],
+  "stop_words": [
+    "стоп",
+    "выход",
+    "пока"
+  ]
+}
